@@ -3,7 +3,7 @@ name: Hands on Lab for NETCORE
 on:
   push:
     branches:
-      - labfornetcore
+      - labfornetcore2
     paths:
     - 'README.md' 
 
