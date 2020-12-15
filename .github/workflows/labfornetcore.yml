@@ -55,16 +55,18 @@ jobs:
       # Run dotnet build and publish for API APP
       - name: dotnet build and publish for API APP
         run: |
+          pushd './${{ env.AZURE_APIAPP_PACKAGE_PATH }}'
           dotnet restore
           dotnet build --configuration Release
           dotnet publish -c Release -o ./apiapp
+          popd
     
       # Deploy to Azure API Web apps
       - name: 'Run Azure webapp deploy action using service principal'
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_APIAPP_NAME }} # Replace with your app name
-          package: '/home/runner/work/DevopsWithGithub-Hands-on-Labs/DevopsWithGithub-Hands-on-Labs/src/API/apiapp/'
+          package: '${{ env.AZURE_APIAPP_PACKAGE_PATH }}/apiapp'
       
                       
   buildWebApp:
@@ -101,13 +103,15 @@ jobs:
       # Run dotnet build and publish for WebAPP
       - name: dotnet build and publish for WebAPP
         run: |
+          pushd './${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
           dotnet restore
           dotnet build --configuration Release
           dotnet publish -c Release -o ./webapp
+          popd
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using service principal'
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          package: '/home/runner/work/DevopsWithGithub-Hands-on-Labs/DevopsWithGithub-Hands-on-Labs/src/Web/webapp/'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/webapp'
