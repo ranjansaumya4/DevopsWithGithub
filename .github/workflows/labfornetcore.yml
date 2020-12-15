@@ -54,10 +54,11 @@ jobs:
       
       # Run dotnet build and publish for API APP
       - name: dotnet build and publish for API APP
+        shell: bash
         run: |
-          pushd './${{ env.AZURE_APIAPP_PACKAGE_PATH }}'
           dotnet restore
           dotnet build --configuration Release
+          pushd './${{ env.AZURE_APIAPP_PACKAGE_PATH }}'
           dotnet publish -c Release -o ./apiapp
           popd
     
