@@ -58,7 +58,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          pushd './${{ env.AZURE_APIAPP_PACKAGE_PATH }}'
+          pushd './src/API'
           dotnet publish -c Release -o ./apiapp
           popd
     
@@ -67,7 +67,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_APIAPP_NAME }} # Replace with your app name
-          package: '${{ env.AZURE_APIAPP_PACKAGE_PATH }}/apiapp'
+          package: './src/API/apiapp'
       
                       
   buildWebApp:
