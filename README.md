@@ -1,4 +1,4 @@
-# DevopsWithGithub Hands on Labs .
+# DevopsWithGithub Hands on Labs
 
 1. Create Storage accouunt , then create container named 'images' give blob anoymous access to that container and upload images'
 2. Modify README.md file to run workflow
