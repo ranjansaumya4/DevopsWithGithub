@@ -17,6 +17,7 @@ env:
   AZURE_APIAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   AZURE_WEBAPP_PACKAGE_PATH: '.'
   DOTNET_VERSION: '3.1.x'           # set this to the dot net version to use
+  GITHUB_REPOSISTORY_NAME: 'DevopsWithGithub-Hands-on-Labs'  
 
 jobs:
   buildAPIAPP:
